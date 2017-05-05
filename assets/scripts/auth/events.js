@@ -32,11 +32,23 @@ const onSignOut = (event) => {
     .catch(ui.signOutFailure)
 }
 
+const onNoAccount = () => {
+  $('.landing-page').hide()
+  $('.signup-page').show()
+}
+
+const onBackToSignIn = () => {
+  $('.landing-page').show()
+  $('.signup-page').hide()
+}
+
 const addHandlers = () => {
   $('#form-signup').on('submit', onSignUp)
   $('#form-signin').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#signout').on('click', onSignOut)
+  $('#no-account').on('click', onNoAccount)
+  $('#back-to-signin').on('click', onBackToSignIn)
 }
 module.exports = {
   addHandlers

@@ -19,7 +19,7 @@
   <div class="landing-page">
 
     <div class="form-group>"
-      <form id="form-signin" class="form-signin" >
+      <form id="form-signin">
         <h2> Please sign in</h2>
 
         <label for="inputEmail" class="sr-only">Email address</label>
@@ -30,7 +30,7 @@
 
         <button class="btn btn-default btn-block" type="submit">Sign In</button>
       </form>
-    <div>
+    </div>
     <!-- /form group -->
 
     <button id="no-account" class="btn btn-default">No account? Sign up here!</button>
@@ -41,17 +41,23 @@
   <!-- sign up page -->
   <div class="signup-page start-hidden">
 
-    <form id="form-signup" class="form-signin start-hidden">
-      <h2 class="form-signin-heading">Please sign up</h2>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input name="credentials[email]" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input name="credentials[password]" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-      <input name="credentials[password_confirmation]" type="password" class="form-control" placeholder="Password Confirmation" required="">
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
-    </form>
+    <div class="form-group"
+      <form id="form-signup" >
+        <h2> Please sign up</h2>
 
-    <button id="back-to-signin" class="btn btn-lg btn-primary btn-block">Already have an account?</button>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input name="credentials[email]" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+        <label for="inputPassword" class="sr-only">Password</label>
+
+        <input name="credentials[password]" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        <input name="credentials[password_confirmation]" type="password" class="form-control" placeholder="Password Confirmation" required="">
+
+        <button class="btn btn-default btn-block" type="submit">Sign Up</button>
+      </form>
+      <button id="back-to-signin" class="btn btn-default">Already have an account?</button>
+   </div>
+
+
 
   </div>
   <!-- /sign up page -->

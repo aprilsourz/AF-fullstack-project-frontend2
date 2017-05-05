@@ -22,11 +22,7 @@ const signUpFailure = (error) => {
 }
 
 const signInSuccess = (data) => {
-  console.log(data)
-  console.log('You signed in!')
-
   store.user = data.user
-  console.log(store.user)
 }
 
 const signInFailure = (error) => {
