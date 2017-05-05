@@ -3,9 +3,8 @@ const api = require('./api')
 const ui = require('./ui')
 
 const onItemIndex = (event) => {
-  const data = getFormFields(event.target)
   event.preventDefault()
-  api.itemIndex(data)
+  api.itemIndex()
     .then(ui.itemIndexSuccess)
     .catch(ui.itemIndexFailure)
 }
@@ -19,11 +18,20 @@ const onItemDestroy = (event) => {
     .then(ui.itemDestroySuccess)
     .catch(ui.itemDestroyFailure)
 }
+const onCreateItem = (event) => {
+  const data = getFormFields(event.target)
+  console.log(data)
+  event.preventDefault()
+
+  api.itemCreate(data)
+    .then(ui.itemCreateSuccess)
+    .catch(ui.itemCreateFailure)
+}
 
 const addHandlers = () => {
   $('#item-index').on('click', onItemIndex)
   $('#item-destroy').on('click', onItemDestroy)
-  // $('#change-password').on('submit', onChangePassword)
+  $('#item-create').on('submit', onCreateItem)
   // $('#form-signout').on('submit', onSignOut)
 }
 

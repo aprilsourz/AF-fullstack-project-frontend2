@@ -16,9 +16,19 @@ const itemDestroyFailure = (data) => {
   console.log(data)
 }
 
+const itemCreateSuccess = (data) => {
+  console.log(data)
+}
+
+const itemCreateFailure = (data) => {
+  console.log(data)
+}
+
 module.exports = {
   itemIndexSuccess,
   itemIndexFailure,
   itemDestroyFailure,
-  itemDestroySuccess
+  itemDestroySuccess,
+  itemCreateSuccess,
+  itemCreateFailure
 }

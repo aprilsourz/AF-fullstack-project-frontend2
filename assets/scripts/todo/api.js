@@ -20,18 +20,19 @@ const itemDestroy = (id) => {
   })
 }
 
-// const createGame = () => {
-//   return $.ajax({
-//     method: 'POST',
-//     url: config.apiOrigin + '/games',
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     },
-//     data: {}
-//   })
-// }
+const itemCreate = (content) => {
+  return $.ajax({
+    method: 'POST',
+    url: config.apiOrigin + '/items',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: content
+  })
+}
 
 module.exports = {
   itemIndex,
-  itemDestroy
+  itemDestroy,
+  itemCreate
 }
