@@ -1,71 +1,89 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Simplist</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags unless you know what you are doing -->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <title>Simplist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `script` tags unless you know what you are doing -->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body class="container-fluid">
+  <!-- Do not add `link` tags unless you know what you are doing -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-      <form id="form-signup" class="form-signin start-hidden">
-        <h2 class="form-signin-heading">Please sign up</h2>
+  <!-- Do not add `script` tags unless you know what you are doing -->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body class="container-fluid">
+
+  <!-- landing page -->
+  <div class="landing-page">
+
+    <div class="form-group>"
+      <form id="form-signin" class="form-signin" >
+        <h2> Please sign in</h2>
+
         <label for="inputEmail" class="sr-only">Email address</label>
         <input name="credentials[email]" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+
         <label for="inputPassword" class="sr-only">Password</label>
         <input name="credentials[password]" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-        <input name="credentials[password_confirmation]" type="password" class="form-control"  placeholder="Password Confirmation" required="">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+
+        <button class="btn btn-default btn-block" type="submit">Sign In</button>
       </form>
+    <div>
+    <!-- /form group -->
 
-      <form id="form-signin" class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input name="credentials[email]" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input name="credentials[password]" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
-      </form>
+    <button id="no-account" class="btn btn-default">No account? Sign up here!</button>
 
-      <form id="no-account"  class="form-signin">
-        <fieldset>
-          <button id="no-account-button" class="btn btn-lg btn-primary btn-block" type="submit">No account? Sign up here!</button>
-        </fieldset>
-      </form>
+  </div>
+  <!-- /landing page -->
 
-      <form id="change-password" class="form-signin start-hidden">
-        <h2 class="form-signin-heading">Change Password</h2>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input name="passwords[old]" type="password" id="inputPassword" class="form-control" placeholder="Old password" required="">
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input name="passwords[new]" type="password" id="inputPassword" class="form-control" placeholder="New Password" required="">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Change Password</button>
-      </form>
+  <!-- sign up page -->
+  <div class="signup-page start-hidden">
 
-      <form id="form-signout">
-        <fieldset>
-          <button id="signout-button" class="btn btn-lg btn-primary btn-block" type="submit">Sign Out</button>
-        </fieldset>
-      </form>
+    <form id="form-signup" class="form-signin start-hidden">
+      <h2 class="form-signin-heading">Please sign up</h2>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input name="credentials[email]" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input name="credentials[password]" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+      <input name="credentials[password_confirmation]" type="password" class="form-control" placeholder="Password Confirmation" required="">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+    </form>
 
-      <p id="display-error"></p>
+    <button id="back-to-signin" class="btn btn-lg btn-primary btn-block">Already have an account?</button>
 
-      <button id="item-index" class="btn btn-lg">items index</button>
+  </div>
+  <!-- /sign up page -->
+
+  <!-- to do list page -->
+  <div class="todo-page start-hidden">
+
+    <form id="change-password" class="form-signin">
+      <h2 class="form-signin-heading">Change Password</h2>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input name="passwords[old]" type="password" id="inputPassword" class="form-control" placeholder="Old password" required="">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input name="passwords[new]" type="password" id="inputPassword" class="form-control" placeholder="New Password" required="">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Change Password</button>
+    </form>
+
+    <button id="signout" class="btn btn-lg btn-primary btn-block">Sign Out</button>
+
+
+    <p id="display-error"></p>
+
+    <button id="item-index" class="btn btn-lg">items index</button>
 
     <div data-id="8">
       <button id="item-destroy" class="btn btn-lg">Item destroy</button>
     </div>
 
-      <form id="item-create" class="form-signin">
-        <label>Create Item</label>
-        <input name="item[content]" type="text" class="form-control" required="" autofocus="">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
-      </form>
+    <form id="item-create" class="form-signin">
+      <label>Create Item</label>
+      <input name="item[content]" type="text" class="form-control" required="" autofocus="">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+    </form>
 
     <div data-id="1">
       <form id="item-edit" class="form-signin">
@@ -75,7 +93,8 @@
       </form>
     </div>
 
+  </div>
+  <!-- /to do list page -->
+</body>
 
-
-    </body>
 </html>
