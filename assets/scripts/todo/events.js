@@ -10,9 +10,19 @@ const onItemIndex = (event) => {
     .catch(ui.itemIndexFailure)
 }
 
+const onItemDestroy = (event) => {
+  event.preventDefault()
+  const dataId = $(event.target).parent()[0]
+  const destroyId = $(dataId).attr('data-id')
+
+  api.itemDestroy(destroyId)
+    .then(ui.itemDestroySuccess)
+    .catch(ui.itemDestroyFailure)
+}
+
 const addHandlers = () => {
   $('#item-index').on('click', onItemIndex)
-  // $('#form-signin').on('submit', onSignIn)
+  $('#item-destroy').on('click', onItemDestroy)
   // $('#change-password').on('submit', onChangePassword)
   // $('#form-signout').on('submit', onSignOut)
 }

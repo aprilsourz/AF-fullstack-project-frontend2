@@ -10,6 +10,16 @@ const itemIndex = () => {
   })
 }
 
+const itemDestroy = (id) => {
+  return $.ajax({
+    url: config.apiOrigin + '/items/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 // const createGame = () => {
 //   return $.ajax({
 //     method: 'POST',
@@ -22,5 +32,6 @@ const itemIndex = () => {
 // }
 
 module.exports = {
-  itemIndex
+  itemIndex,
+  itemDestroy
 }
