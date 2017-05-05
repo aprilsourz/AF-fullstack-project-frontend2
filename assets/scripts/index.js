@@ -15,8 +15,9 @@ require('./example')
 
 const authEvents = require('./auth/events.js')
 const todoEvents = require('./todo/events.js')
+const showSignIn = require('./templates/sign-in.handlebars')
 
 $(() => {
-  authEvents.addHandlers()
-  todoEvents.addHandlers()
+  $('#landing').append(showSignIn)
+  authEvents.signInHandlers()
 })

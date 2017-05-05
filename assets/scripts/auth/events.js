@@ -17,6 +17,7 @@ const onSignIn = (event) => {
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
+  console.log('click')
 }
 const onChangePassword = function (event) {
   event.preventDefault()
@@ -35,6 +36,7 @@ const onSignOut = (event) => {
 const onNoAccount = () => {
   $('.landing-page').hide()
   $('.signup-page').show()
+  console.log('click')
 }
 
 const onBackToSignIn = () => {
@@ -42,14 +44,18 @@ const onBackToSignIn = () => {
   $('.signup-page').hide()
 }
 
+const signInHandlers = () => {
+  $('#form-signin').on('submit', onSignIn)
+  $('#no-account').on('click', onNoAccount)
+}
+
 const addHandlers = () => {
   $('#form-signup').on('submit', onSignUp)
-  $('#form-signin').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#signout').on('click', onSignOut)
-  $('#no-account').on('click', onNoAccount)
   $('#back-to-signin').on('click', onBackToSignIn)
 }
 module.exports = {
-  addHandlers
+  addHandlers,
+  signInHandlers
 }

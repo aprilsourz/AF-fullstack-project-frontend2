@@ -22,6 +22,7 @@ const signUpFailure = (error) => {
 }
 
 const signInSuccess = (data) => {
+  console.log(data)
   store.user = data.user
 }
 
