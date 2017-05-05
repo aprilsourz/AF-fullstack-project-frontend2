@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Simplist</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags unless you know what you are doing -->
@@ -12,14 +12,48 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <h1>Example</h1>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+      <form id="form-signup" class="form-signin start-hidden">
+        <h2 class="form-signin-heading">Please sign up</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input name="credentials[email]" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input name="credentials[password]" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        <input name="credentials[password_confirmation]" type="password" class="form-control"  placeholder="Password Confirmation" required="">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+      </form>
+
+      <form id="form-signin" class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input name="credentials[email]" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input name="credentials[password]" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+      </form>
+
+      <form id="no-account"  class="form-signin">
+        <fieldset>
+          <button id="no-account-button" class="btn btn-lg btn-primary btn-block" type="submit">No account? Sign up here!</button>
+        </fieldset>
+      </form>
+
+      <form id="change-password" class="form-signin start-hidden">
+        <h2 class="form-signin-heading">Change Password</h2>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input name="passwords[old]" type="password" id="inputPassword" class="form-control" placeholder="Old password" required="">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input name="passwords[new]" type="password" id="inputPassword" class="form-control" placeholder="New Password" required="">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Change Password</button>
+      </form>
+
+      <form id="form-signout">
+        <fieldset>
+          <button id="signout-button" class="btn btn-lg btn-primary btn-block" type="submit">Sign Out</button>
+        </fieldset>
+      </form>
+
+      <p id="display-error">asdf</p>
+
     </body>
 </html>
