@@ -1,6 +1,5 @@
 const store = require('../store.js')
 
-
 const displayErrorMessage = (errorText) => {
   $('#display-error').text('')
   $('#display-error').show()
