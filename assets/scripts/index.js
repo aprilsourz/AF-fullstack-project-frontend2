@@ -14,7 +14,9 @@ $(() => {
 require('./example')
 
 const authEvents = require('./auth/events.js')
+const todoEvents = require('./todo/events.js')
 
 $(() => {
   authEvents.addHandlers()
+  todoEvents.addHandlers()
 })
