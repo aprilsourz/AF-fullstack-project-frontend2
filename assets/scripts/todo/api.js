@@ -31,8 +31,21 @@ const itemCreate = (content) => {
   })
 }
 
+const itemEdit = (id, content) => {
+  return $.ajax({
+    url: config.apiOrigin + '/items/' + id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: content
+    // data: data
+  })
+}
+
 module.exports = {
   itemIndex,
   itemDestroy,
-  itemCreate
+  itemCreate,
+  itemEdit
 }
