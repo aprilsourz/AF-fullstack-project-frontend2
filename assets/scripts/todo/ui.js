@@ -1,7 +1,10 @@
 const store = require('../store.js')
+const showAllItems = require('../templates/item-index.handlebars')
 
 const itemIndexSuccess = (data) => {
-  console.log(data)
+  console.log(data.items)
+  const allItemsHtml = showAllItems({ items: data.items })
+  $('#current-list').html(allItemsHtml)
 }
 
 const itemIndexFailure = (data) => {

@@ -20,4 +20,5 @@ const showSignIn = require('./templates/sign-in.handlebars')
 $(() => {
   $('#current-page').append(showSignIn)
   authEvents.signInHandlers()
+  todoEvents.addHandlers()
 })

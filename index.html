@@ -16,34 +16,10 @@
 <body class="container-fluid">
   <div id="current-page"></div>
 
-
-
-
-  <!-- <div class="signup-page">
-
-    <div class="form-group"
-      <form id="form-signup" >
-        <h2> Please sign up</h2>
-
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input name="credentials[email]" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-        <label for="inputPassword" class="sr-only">Password</label>
-
-        <input name="credentials[password]" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-        <input name="credentials[password_confirmation]" type="password" class="form-control" placeholder="Password Confirmation" required="">
-
-        <button class="btn btn-default btn-block" type="submit">Sign Up</button>
-      </form>
-      <button id="back-to-signin" class="btn btn-default">Already have an account?</button>
-   </div>
-
-
-  </div>
-
-
   <div class="todo-page ">
 
-    <form id="change-password" class="form-signin">
+    <!-- change password form -->
+    <form id="change-password" class="form-signin dev-hide">
       <h2 class="form-signin-heading">Change Password</h2>
       <label for="inputPassword" class="sr-only">Password</label>
       <input name="passwords[old]" type="password" id="inputPassword" class="form-control" placeholder="Old password" required="">
@@ -52,33 +28,39 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">Change Password</button>
     </form>
 
-    <button id="signout" class="btn btn-lg btn-primary btn-block">Sign Out</button>
+    <!-- signout button -->
+    <button id="signout" class="btn btn-lg btn-primary btn-block dev-hide">Sign Out</button>
 
-
-    <p id="display-error"></p>
+    <!-- display error messages -->
+    <p id="display-error" class="dev-hide"></p>
 
     <button id="item-index" class="btn btn-lg">items index</button>
 
-    <div data-id="8">
+    <div data-id="8" class="dev-hide">
       <button id="item-destroy" class="btn btn-lg">Item destroy</button>
     </div>
 
-    <form id="item-create" class="form-signin">
+    <!-- create item -->
+    <form id="item-create" class="form-signin dev-hide">
       <label>Create Item</label>
       <input name="item[content]" type="text" class="form-control" required="" autofocus="">
       <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
     </form>
 
+<!-- edit item -->
     <div data-id="1">
-      <form id="item-edit" class="form-signin">
+      <form id="item-edit" class="form-signin dev-hide">
         <label>Edit Item</label>
         <input name="item[content]" type="text" class="form-control" required="" autofocus="">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Edit</button>
       </form>
     </div>
 
-  </div> -->
+    <!-- div to insert item index into -->
+    <div id="current-list"></div>
 
+  </div>
+<!-- /todo page -->
 </body>
 
 </html>
