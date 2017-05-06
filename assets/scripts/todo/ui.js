@@ -77,18 +77,35 @@ const itemEditFailure = (data) => {
 
 // swamps form and adds handlers for form when edit button is clicked
 const startItemEdit = (event) => {
-  editFormSwamp(event)
+  editFormSwap(event)
   editItemHandlers()
 }
 
 // swaps the edit form in for the event
 // stores the items id and content
-const editFormSwamp = (event) => {
+const editFormSwap = (event) => {
+  const id = getIdFromElement(event)
+  const content = getContentFromElement(event)
+  replaceWithEdit(event, id, content)
+}
+
+// grabs data-id from todo-item or edit form
+const getIdFromElement = (event) => {
   const parentDiv = $(event.target).parents()
-  const itemId = $(parentDiv[2]).attr('data-id')
-  const itemContent = $(parentDiv[2]).attr('data-content')
-  const editFormHtml = showEditform({id: itemId, content: itemContent})
-  $(parentDiv[2]).replaceWith(editFormHtml)
+  return $(parentDiv[2]).attr('data-id')
+}
+
+// grabs data-content from to-do item or edit form
+const getContentFromElement = (event) => {
+  const parentDiv = $(event.target).parents()
+  return $(parentDiv[2]).attr('data-content')
+}
+
+// replaces to do item with edit form
+const replaceWithEdit = (event, id, content) => {
+  const editFormHtml = showEditform({id: id, content: content})
+  const parentDiv = $(event.target).parents()[2]
+  $(parentDiv).replaceWith(editFormHtml)
 }
 
 // event that triggers the create item ajax request.
@@ -97,9 +114,17 @@ const saveItemEdit = (event) => {
   onEditItem(event)
 }
 
+// cancels the edit and puts the todo item where the form was
+const cancelItemEdit = (event) => {
+  event.preventDefault()
+}
+
+// handlers for edit item form
 const editItemHandlers = () => {
   $('.item-edit-form').off('submit', saveItemEdit)
   $('.item-edit-form').on('submit', saveItemEdit)
+  $('.cancel-edit').off('click', cancelItemEdit)
+  $('.cancel-edit').on('click', cancelItemEdit)
 }
 
 // handlers for whenever index item or create item happens
