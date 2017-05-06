@@ -8,16 +8,18 @@ const onItemIndex = (event) => {
     .then(ui.itemIndexSuccess)
     .catch(ui.itemIndexFailure)
 }
+// this is where this function should go, will refactor later
+//
+// const onItemDestroy = (event) => {
+//   event.preventDefault()
+//   console.log('clicked')
+//   const dataId = $(event.target).parent()[0]
+//   const destroyId = $(dataId).attr('data-id')
+//   api.itemDestroy(destroyId)
+//     .then(ui.itemDestroySuccess)
+//     .catch(ui.itemDestroyFailure)
+// }
 
-const onItemDestroy = (event) => {
-  event.preventDefault()
-  const dataId = $(event.target).parent()[0]
-  const destroyId = $(dataId).attr('data-id')
-
-  api.itemDestroy(destroyId)
-    .then(ui.itemDestroySuccess)
-    .catch(ui.itemDestroyFailure)
-}
 const onCreateItem = (event) => {
   const content = getFormFields(event.target)
   event.preventDefault()
@@ -40,7 +42,6 @@ const onEditItem = (event) => {
 
 const addHandlers = () => {
   $('#item-index').on('click', onItemIndex)
-  $('#item-destroy').on('click', onItemDestroy)
   $('#item-create').on('submit', onCreateItem)
   $('#item-edit').on('submit', onEditItem)
 }

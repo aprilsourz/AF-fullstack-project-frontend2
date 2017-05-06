@@ -1,5 +1,4 @@
 const getFormFields = require(`../../../lib/get-form-fields`)
-
 const api = require('./api')
 const ui = require('./ui')
 const showSignUp = require('../templates/sign-up.handlebars')
