@@ -10,9 +10,7 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 
 const onEditItem = (event) => {
   const newContent = getFormFields(event.target)
-  const dataId = $(event.target).parents()
-  const editId = $(dataId[1]).attr('data-id')
-  console.log(editId)
+  const editId = getIdFromElement(event)
 
   api.itemEdit(editId, newContent)
     .then(itemEditSuccess)
@@ -21,9 +19,9 @@ const onEditItem = (event) => {
 
 const onItemDestroy = (event) => {
   event.preventDefault()
-  const dataId = $(event.target).parents()
-  const destroyId = $(dataId[2]).attr('data-id')
-  $(dataId[2]).hide()
+  const parentDiv = $(event.target).parents()
+  const destroyId = getIdFromElement(event)
+  $(parentDiv[2]).hide()
 
   api.itemDestroy(destroyId)
     .then(itemDestroySuccess)
@@ -32,6 +30,7 @@ const onItemDestroy = (event) => {
 
 // end of stuff that shouldn't here
 
+// successful ajax index
 const itemIndexSuccess = (data) => {
   console.log(data.items)
   const allItemsHtml = showAllItems({ items: data.items })
@@ -51,6 +50,7 @@ const itemDestroyFailure = (data) => {
   console.log(data)
 }
 
+// successsful ajax post
 const itemCreateSuccess = (data) => {
   const showItemHtml = showItem({ item: data.item })
   $('#current-list').append(showItemHtml)
@@ -60,9 +60,8 @@ const itemCreateSuccess = (data) => {
 const itemCreateFailure = (data) => {
   console.log(data)
 }
-
+// succesful ajax patch
 const itemEditSuccess = (data) => {
-  console.log(data)
   const showItemHtml = showItem({ item: data.item })
   const currentEdit = $('div').filter('#current-edit')
   $(currentEdit).replaceWith(showItemHtml)
