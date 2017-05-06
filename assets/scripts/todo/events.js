@@ -29,21 +29,20 @@ const onCreateItem = (event) => {
     .catch(ui.itemCreateFailure)
 }
 
-const onEditItem = (event) => {
-  const content = getFormFields(event.target)
-  event.preventDefault()
-  const dataId = $(event.target).parent()[0]
-  const editId = $(dataId).attr('data-id')
-
-  api.itemEdit(editId, content)
-    .then(ui.itemEditSuccess)
-    .catch(ui.itemEditFailure)
-}
+// const onEditItem = (event) => {
+//   const content = getFormFields(event.target)
+//   event.preventDefault()
+//   const dataId = $(event.target).parent()[0]
+//   const editId = $(dataId).attr('data-id')
+//
+//   api.itemEdit(editId, content)
+//     .then(ui.itemEditSuccess)
+//     .catch(ui.itemEditFailure)
+// }
 
 const addHandlers = () => {
   $('#item-index').on('click', onItemIndex)
   $('#item-create').on('submit', onCreateItem)
-  $('#item-edit').on('submit', onEditItem)
 }
 
 module.exports = {

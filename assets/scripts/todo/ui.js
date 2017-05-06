@@ -1,25 +1,41 @@
 
 const showAllItems = require('../templates/item-index.handlebars')
 const showItem = require('../templates/create-item.handlebars')
+const showEditform = require('../templates/edit-item.handlebars')
 const api = require('./api.js')
+const getFormFields = require(`../../../lib/get-form-fields`)
 
-// not the where this file should go, couldn't get it to work anywher else
+// not the where these functions should go, couldn't get it to work anywhere else
 // will refactor later
+
+const onEditItem = (event) => {
+  const newContent = getFormFields(event.target)
+  const dataId = $(event.target).parents()
+  const editId = $(dataId[1]).attr('data-id')
+
+  api.itemEdit(editId, newContent)
+    .then(itemEditSuccess)
+    .catch(itemEditFailure)
+}
+
 const onItemDestroy = (event) => {
   event.preventDefault()
   const dataId = $(event.target).parents()
   const destroyId = $(dataId[2]).attr('data-id')
   $(dataId[2]).hide()
+
   api.itemDestroy(destroyId)
     .then(itemDestroySuccess)
     .catch(itemDestroyFailure)
 }
 
+// end of stuff that shouldn't here
+
 const itemIndexSuccess = (data) => {
   console.log(data.items)
   const allItemsHtml = showAllItems({ items: data.items })
   $('#current-list').html(allItemsHtml)
-  deleteButtonHandlers()
+  createItemHandlers()
 }
 
 const itemIndexFailure = (data) => {
@@ -37,7 +53,7 @@ const itemDestroyFailure = (data) => {
 const itemCreateSuccess = (data) => {
   const showItemHtml = showItem({ item: data.item })
   $('#current-list').append(showItemHtml)
-  deleteButtonHandlers()
+  createItemHandlers()
 }
 
 const itemCreateFailure = (data) => {
@@ -46,15 +62,56 @@ const itemCreateFailure = (data) => {
 
 const itemEditSuccess = (data) => {
   console.log(data)
+  // const showItemHtml = showItem({ item: data.item })
+  // const foo = $('#currentlist').filter(() => {
+  //   return $(this).attr('data-id') === data.id
+  //   foo.bar
+  // })
+
+  // $('#current-list').append(showItemHtml)
+  createItemHandlers()
 }
 
 const itemEditFailure = (data) => {
   console.log(data)
 }
 
-const deleteButtonHandlers = () => {
-  $('#item-destroy').off('click', onItemDestroy)
+// stuff that ended up here because of the orginal issue while trying to trigger
+// a required function in the click handler (itemDestroy)
+
+// swamps form and adds handlers for form when edit button is clicked
+const startItemEdit = (event) => {
+  editFormSwamp(event)
+  editItemHandlers()
+}
+
+// swaps the edit form in for the event
+// stores the items id and content
+const editFormSwamp = (event) => {
+  const parentDiv = $(event.target).parents()
+  const itemId = $(parentDiv[2]).attr('data-id')
+  const itemContent = $(parentDiv[2]).attr('data-content')
+  const editFormHtml = showEditform({id: itemId, content: itemContent})
+  $(parentDiv[2]).replaceWith(editFormHtml)
+}
+
+// event that triggers the create item ajax request.
+const saveItemEdit = (event) => {
+  event.preventDefault()
+  onEditItem(event)
+}
+
+const editItemHandlers = () => {
+  $('.item-edit-form').off('submit', saveItemEdit)
+  $('.item-edit-form').on('submit', saveItemEdit)
+}
+
+// handlers for whenever index item or create item happens
+const createItemHandlers = () => {
+  $('.item-destroy').off('click', onItemDestroy)
+  $('.item-edit').off('click', startItemEdit)
   $('.item-destroy').on('click', onItemDestroy)
+  $('.item-edit').on('click', startItemEdit)
 }
 
 module.exports = {
