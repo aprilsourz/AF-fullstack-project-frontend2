@@ -1,5 +1,6 @@
 const store = require('../store.js')
 const showAllItems = require('../templates/item-index.handlebars')
+const showItem = require('../templates/create-item.handlebars')
 
 const itemIndexSuccess = (data) => {
   console.log(data.items)
@@ -20,7 +21,8 @@ const itemDestroyFailure = (data) => {
 }
 
 const itemCreateSuccess = (data) => {
-  console.log(data)
+  const showItemHtml = showItem({ item: data.item })
+  $('#current-list').append(showItemHtml)
 }
 
 const itemCreateFailure = (data) => {
