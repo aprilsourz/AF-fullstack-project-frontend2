@@ -85,10 +85,7 @@ const startItemEdit = (event) => {
 // swaps the edit form in for the event
 // stores the items id and content
 const editFormSwap = (event) => {
-  const item = {
-    id: getIdFromElement(event),
-    content: getContentFromElement(event)
-  }
+  const item = createItemObject(event)
   replaceCurrent(event, item, showEditform)
 }
 
@@ -120,15 +117,27 @@ const saveItemEdit = (event) => {
 // cancels the edit and puts the todo item where the form was
 const cancelItemEdit = (event) => {
   event.preventDefault()
-  const item = {
-    id: getIdFromElement(event),
-    content: getContentFromElement(event)
-  }
-  replaceCurrent(event, item, showItem)
+  replaceCurrent(event, createItemObject(event), showItem)
   createItemHandlers()
 }
 
+// creates object to pass to handlebars template
+const createItemObject = (event) => {
+  return {
+    id: getIdFromElement(event),
+    content: getContentFromElement(event)
+  }
+}
+
+// things to try for require
+// const foo = function() {
+//   return requiredFn
+// }
+//
+// const { saveItemEdit } = require('./foo')
+
 // handlers for edit item form
+
 const editItemHandlers = () => {
   $('.item-edit-form').off('submit', saveItemEdit)
   $('.item-edit-form').on('submit', saveItemEdit)
