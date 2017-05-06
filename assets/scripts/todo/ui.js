@@ -120,10 +120,12 @@ const saveItemEdit = (event) => {
 // cancels the edit and puts the todo item where the form was
 const cancelItemEdit = (event) => {
   event.preventDefault()
-  console.log('click')
-  const id = getIdFromElement(event)
-  const content = getContentFromElement(event)
-  replaceCurrent(event, id, content, showItem)
+  const item = {
+    id: getIdFromElement(event),
+    content: getContentFromElement(event)
+  }
+  replaceCurrent(event, item, showItem)
+  createItemHandlers()
 }
 
 // handlers for edit item form
