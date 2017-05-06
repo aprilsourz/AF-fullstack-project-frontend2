@@ -62,13 +62,9 @@ const itemCreateFailure = (data) => {
 
 const itemEditSuccess = (data) => {
   console.log(data)
-  // const showItemHtml = showItem({ item: data.item })
-  // const foo = $('#currentlist').filter(() => {
-  //   return $(this).attr('data-id') === data.id
-  //   foo.bar
-  // })
-
-  // $('#current-list').append(showItemHtml)
+  const showItemHtml = showItem({ item: data.item })
+  const currentEdit = $('div').filter('#current-edit')
+  $(currentEdit).replaceWith(showItemHtml)
   createItemHandlers()
 }
 
