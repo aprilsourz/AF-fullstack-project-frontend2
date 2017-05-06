@@ -12,6 +12,7 @@ const onEditItem = (event) => {
   const newContent = getFormFields(event.target)
   const dataId = $(event.target).parents()
   const editId = $(dataId[1]).attr('data-id')
+  console.log(editId)
 
   api.itemEdit(editId, newContent)
     .then(itemEditSuccess)
@@ -84,9 +85,11 @@ const startItemEdit = (event) => {
 // swaps the edit form in for the event
 // stores the items id and content
 const editFormSwap = (event) => {
-  const id = getIdFromElement(event)
-  const content = getContentFromElement(event)
-  replaceCurrent(event, id, content, showEditform)
+  const item = {
+    id: getIdFromElement(event),
+    content: getContentFromElement(event)
+  }
+  replaceCurrent(event, item, showEditform)
 }
 
 // grabs data-id from todo-item or edit form
@@ -102,8 +105,8 @@ const getContentFromElement = (event) => {
 }
 
 // replaces to do item with edit form
-const replaceCurrent = (event, id, content, template) => {
-  const htmlToInsert = template({id: id, content: content})
+const replaceCurrent = (event, item, template) => {
+  const htmlToInsert = template({item: item})
   const parentDiv = $(event.target).parents()[2]
   $(parentDiv).replaceWith(htmlToInsert)
 }
@@ -117,8 +120,10 @@ const saveItemEdit = (event) => {
 // cancels the edit and puts the todo item where the form was
 const cancelItemEdit = (event) => {
   event.preventDefault()
-  // const id = getIdFromElement(event)
-  // const content = getContentFromElement(event)
+  console.log('click')
+  const id = getIdFromElement(event)
+  const content = getContentFromElement(event)
+  replaceCurrent(event, id, content, showItem)
 }
 
 // handlers for edit item form
