@@ -2,6 +2,8 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 
 const api = require('./api')
 const ui = require('./ui')
+const showSignUp = require('../templates/sign-up.handlebars')
+const showSignIn = require('../templates/sign-in.handlebars')
 
 const onSignUp = (event) => {
   const data = getFormFields(event.target)
@@ -9,6 +11,7 @@ const onSignUp = (event) => {
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
+  console.log('click')
 }
 
 const onSignIn = (event) => {
@@ -17,8 +20,8 @@ const onSignIn = (event) => {
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
-  console.log('click')
 }
+
 const onChangePassword = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -26,6 +29,7 @@ const onChangePassword = function (event) {
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
 }
+
 const onSignOut = (event) => {
   event.preventDefault()
   api.signOut()
@@ -33,29 +37,40 @@ const onSignOut = (event) => {
     .catch(ui.signOutFailure)
 }
 
+// switch to sign up screen
 const onNoAccount = () => {
-  $('.landing-page').hide()
-  $('.signup-page').show()
-  console.log('click')
+  $('#current-page').html(showSignUp)
+  signUpHandlers()
 }
 
+// back to sign in button
 const onBackToSignIn = () => {
-  $('.landing-page').show()
-  $('.signup-page').hide()
+  $('#current-page').html(showSignIn)
+  signInHandlers()
 }
 
 const signInHandlers = () => {
+  $('#form-signin').off('submit', onSignIn)
+  $('#no-account').off('click', onNoAccount)
   $('#form-signin').on('submit', onSignIn)
   $('#no-account').on('click', onNoAccount)
+}
+
+const signUpHandlers = () => {
+  $('#form-signup').off('submit', onSignUp)
+  $('#back-to-signin').off('click', onBackToSignIn)
+  $('#form-signup').on('submit', onSignUp)
+  $('#back-to-signin').on('click', onBackToSignIn)
 }
 
 const addHandlers = () => {
   $('#form-signup').on('submit', onSignUp)
   $('#change-password').on('submit', onChangePassword)
   $('#signout').on('click', onSignOut)
-  $('#back-to-signin').on('click', onBackToSignIn)
 }
+
 module.exports = {
   addHandlers,
-  signInHandlers
+  signInHandlers,
+  signUpHandlers
 }

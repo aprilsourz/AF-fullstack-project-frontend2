@@ -18,6 +18,6 @@ const todoEvents = require('./todo/events.js')
 const showSignIn = require('./templates/sign-in.handlebars')
 
 $(() => {
-  $('#landing').append(showSignIn)
+  $('#current-page').append(showSignIn)
   authEvents.signInHandlers()
 })
