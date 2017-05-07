@@ -14,7 +14,7 @@ $(() => {
 require('./example')
 
 const authEvents = require('./auth/events.js')
-const todoEvents = require('./todo/events.js')
+const todoEvents = require('./todo/ui.js')
 const showSignIn = require('./templates/sign-in.handlebars')
 
 $(() => {

@@ -11,6 +11,21 @@ const {
 
 // not the where these functions should go, couldn't get it to work anywhere else
 // will refactor later
+const onCreateItem = (event) => {
+  const content = getFormFields(event.target)
+  event.preventDefault()
+
+  api.itemCreate(content)
+    .then(itemCreateSuccess)
+    .catch(itemCreateFailure)
+}
+
+const onItemIndex = (event) => {
+  event.preventDefault()
+  api.itemIndex()
+    .then(itemIndexSuccess)
+    .catch(itemIndexFailure)
+}
 
 const onEditItem = (event) => {
   const newContent = getFormFields(event.target)
@@ -113,6 +128,11 @@ const createItemHandlers = () => {
   $('.item-edit').on('click', onStartEdit)
 }
 
+const addHandlers = () => {
+  $('#item-index').on('click', onItemIndex)
+  $('#item-create').on('submit', onCreateItem)
+}
+
 module.exports = {
   itemIndexSuccess,
   itemIndexFailure,
@@ -121,5 +141,6 @@ module.exports = {
   itemCreateSuccess,
   itemCreateFailure,
   itemEditSuccess,
-  itemEditFailure
+  itemEditFailure,
+  addHandlers
 }
