@@ -80,37 +80,37 @@ const itemEditFailure = (data) => {
 // a required function in the click handler (itemDestroy)
 
 // swamps form and adds handlers for form when edit button is clicked
-const startItemEdit = (event) => {
+const onStartEdit = (event) => {
   editFormSwap(event)
   editItemHandlers()
 }
 
 // event that triggers the create item ajax request.
-const saveItemEdit = (event) => {
+const onSaveEdit = (event) => {
   event.preventDefault()
   onEditItem(event)
 }
 
 // cancels the edit and puts the todo item where the form was
-const cancelItemEdit = (event) => {
+const onCancelEdit = (event) => {
   event.preventDefault()
   replaceCurrent(event, createItemObject(event), showItem)
   createItemHandlers()
 }
 
 const editItemHandlers = () => {
-  $('.item-edit-form').off('submit', saveItemEdit)
-  $('.item-edit-form').on('submit', saveItemEdit)
-  $('.cancel-edit').off('click', cancelItemEdit)
-  $('.cancel-edit').on('click', cancelItemEdit)
+  $('.item-edit-form').off('submit', onSaveEdit)
+  $('.item-edit-form').on('submit', onSaveEdit)
+  $('.cancel-edit').off('click', onCancelEdit)
+  $('.cancel-edit').on('click', onCancelEdit)
 }
 
 // handlers for whenever index item or create item happens
 const createItemHandlers = () => {
   $('.item-destroy').off('click', onItemDestroy)
-  $('.item-edit').off('click', startItemEdit)
+  $('.item-edit').off('click', onStartEdit)
   $('.item-destroy').on('click', onItemDestroy)
-  $('.item-edit').on('click', startItemEdit)
+  $('.item-edit').on('click', onStartEdit)
 }
 
 module.exports = {
