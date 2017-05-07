@@ -3,6 +3,7 @@ const showAllItems = require('../templates/item-index.handlebars')
 const showItem = require('../templates/create-item.handlebars')
 const showEditform = require('../templates/edit-item.handlebars')
 const api = require('./api.js')
+const {replaceCurrent} = require('./helpers.js')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
 // not the where these functions should go, couldn't get it to work anywhere else
@@ -98,13 +99,6 @@ const getIdFromElement = (event) => {
 const getContentFromElement = (event) => {
   const parentDiv = $(event.target).parents()
   return $(parentDiv[2]).attr('data-content')
-}
-
-// replaces to do item with edit form
-const replaceCurrent = (event, item, template) => {
-  const htmlToInsert = template({item: item})
-  const parentDiv = $(event.target).parents()[2]
-  $(parentDiv).replaceWith(htmlToInsert)
 }
 
 // event that triggers the create item ajax request.
