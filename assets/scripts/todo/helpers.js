@@ -1,3 +1,4 @@
+const showEditform = require('../templates/edit-item.handlebars')
 // replaces current template with edit or item template
 const replaceCurrent = (event, item, template) => {
   const htmlToInsert = template({item: item})
@@ -25,8 +26,16 @@ const getContentFromElement = (event) => {
   return $(parentDiv[2]).attr('data-content')
 }
 
+// swaps the edit form in for the event
+// stores the items id and content
+const editFormSwap = (event) => {
+  const item = createItemObject(event)
+  replaceCurrent(event, item, showEditform)
+}
+
 module.exports = {
   replaceCurrent,
   createItemObject,
-  getIdFromElement
+  getIdFromElement,
+  editFormSwap
 }

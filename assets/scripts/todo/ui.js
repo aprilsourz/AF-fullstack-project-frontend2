@@ -1,12 +1,12 @@
 const getFormFields = require(`../../../lib/get-form-fields`)
 const showAllItems = require('../templates/item-index.handlebars')
 const showItem = require('../templates/create-item.handlebars')
-const showEditform = require('../templates/edit-item.handlebars')
 const api = require('./api.js')
 const {
   replaceCurrent,
   createItemObject,
-  getIdFromElement
+  getIdFromElement,
+  editFormSwap
 } = require('./helpers.js')
 
 // not the where these functions should go, couldn't get it to work anywhere else
@@ -83,13 +83,6 @@ const itemEditFailure = (data) => {
 const startItemEdit = (event) => {
   editFormSwap(event)
   editItemHandlers()
-}
-
-// swaps the edit form in for the event
-// stores the items id and content
-const editFormSwap = (event) => {
-  const item = createItemObject(event)
-  replaceCurrent(event, item, showEditform)
 }
 
 // event that triggers the create item ajax request.
