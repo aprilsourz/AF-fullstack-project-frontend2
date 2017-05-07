@@ -1,10 +1,13 @@
-
+const getFormFields = require(`../../../lib/get-form-fields`)
 const showAllItems = require('../templates/item-index.handlebars')
 const showItem = require('../templates/create-item.handlebars')
 const showEditform = require('../templates/edit-item.handlebars')
 const api = require('./api.js')
-const {replaceCurrent} = require('./helpers.js')
-const getFormFields = require(`../../../lib/get-form-fields`)
+const {
+  replaceCurrent,
+  createItemObject,
+  getIdFromElement
+} = require('./helpers.js')
 
 // not the where these functions should go, couldn't get it to work anywhere else
 // will refactor later
@@ -89,18 +92,6 @@ const editFormSwap = (event) => {
   replaceCurrent(event, item, showEditform)
 }
 
-// grabs data-id from todo-item or edit form
-const getIdFromElement = (event) => {
-  const parentDiv = $(event.target).parents()
-  return $(parentDiv[2]).attr('data-id')
-}
-
-// grabs data-content from to-do item or edit form
-const getContentFromElement = (event) => {
-  const parentDiv = $(event.target).parents()
-  return $(parentDiv[2]).attr('data-content')
-}
-
 // event that triggers the create item ajax request.
 const saveItemEdit = (event) => {
   event.preventDefault()
@@ -113,23 +104,6 @@ const cancelItemEdit = (event) => {
   replaceCurrent(event, createItemObject(event), showItem)
   createItemHandlers()
 }
-
-// creates object to pass to handlebars template
-const createItemObject = (event) => {
-  return {
-    id: getIdFromElement(event),
-    content: getContentFromElement(event)
-  }
-}
-
-// things to try for require
-// const foo = function() {
-//   return requiredFn
-// }
-//
-// const { saveItemEdit } = require('./foo')
-
-// handlers for edit item form
 
 const editItemHandlers = () => {
   $('.item-edit-form').off('submit', saveItemEdit)
