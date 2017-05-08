@@ -20,8 +20,7 @@ const onCreateItem = (event) => {
     .catch(itemCreateFailure)
 }
 
-const onItemIndex = (event) => {
-  event.preventDefault()
+const onItemIndex = () => {
   api.itemIndex()
     .then(itemIndexSuccess)
     .catch(itemIndexFailure)
@@ -148,7 +147,6 @@ const createItemHandlers = () => {
 }
 
 const addHandlers = () => {
-  $('#item-index').on('click', onItemIndex)
   $('#item-create').on('submit', onCreateItem)
 }
 
@@ -161,5 +159,6 @@ module.exports = {
   itemCreateFailure,
   itemEditSuccess,
   itemEditFailure,
-  addHandlers
+  addHandlers,
+  onItemIndex
 }

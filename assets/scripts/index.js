@@ -14,11 +14,9 @@ $(() => {
 require('./example')
 
 const authEvents = require('./auth/events.js')
-const todoEvents = require('./todo/ui.js')
 const showSignIn = require('./templates/sign-in.handlebars')
 
 $(() => {
   $('#current-page').append(showSignIn)
   authEvents.signInHandlers()
-  todoEvents.addHandlers()
 })

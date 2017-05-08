@@ -26,9 +26,7 @@ const signUpFailure = (error) => {
 const signInSuccess = (data) => {
   store.user = data.user
   $('#form-signin')[0].reset()
-  $('#current-page').html(showMainPage)
-  $('#signout').on('click', onSignOut)
-  todo.addHandlers()
+  mainPage()
 }
 
 const signInFailure = (error) => {
@@ -70,6 +68,14 @@ const onSignOut = (event) => {
     .catch(signOutFailure)
 }
 // handlers
+
+// helpers
+const mainPage = () => {
+  $('#current-page').html(showMainPage)
+  $('#signout').on('click', onSignOut)
+  todo.addHandlers()
+  todo.onItemIndex()
+}
 
 module.exports = {
   signUpSuccess,
