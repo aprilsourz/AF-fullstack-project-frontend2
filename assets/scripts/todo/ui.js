@@ -138,18 +138,6 @@ const editItemHandlers = () => {
   // mouseMoveHandlers()
 }
 
-const mouseMoveHandlers = () => {
-  $('.current-edit').off('mouseleave', attachClickOutHandlers)
-  $('.current-edit').on('mouseleave', attachClickOutHandlers)
-  $('.current-edit').off('mouseenter', removeClickOutHandlers)
-  $('.current-edit').on('mouseenter', removeClickOutHandlers)
-}
-
-const removeMouseMoveHandlers = () => {
-  $('.current-edit').off('mouseleave', attachClickOutHandlers)
-  $('.current-edit').off('mouseenter', removeClickOutHandlers)
-}
-
 // handlers for whenever index item or create item happens
 const createItemHandlers = () => {
   $('.item-destroy').off('click', onItemDestroy)

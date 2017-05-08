@@ -1,4 +1,5 @@
 const store = require('../store.js')
+const {resetForm} = require('../reset-form.js')
 
 const displayErrorMessage = (errorText) => {
   $('#display-error').text('')
@@ -10,7 +11,9 @@ const displayErrorMessage = (errorText) => {
 const signUpSuccess = (data) => {
   console.log(data)
   console.log('you signed up!')
+
   displayErrorMessage('Thank you for signing up!')
+  $('#form-signup')[0].reset()
 }
 
 const signUpFailure = (error) => {

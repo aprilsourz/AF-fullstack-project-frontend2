@@ -10,7 +10,6 @@ const onSignUp = (event) => {
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
-  console.log('click')
 }
 
 const onSignIn = (event) => {
