@@ -1,25 +1,25 @@
 const store = require('../store.js')
 
-const displayErrorMessage = (errorText) => {
-  $('#display-error').text('')
-  $('#display-error').show()
-  $('#display-error').text(errorText || 'Unknown error')
-  $('#display-error').delay(3000).fadeOut()
+const displayMessage = (errorText, errorPlace) => {
+  $(errorPlace).text('')
+  $(errorPlace).show()
+  $(errorPlace).text(errorText || 'Unknown error')
+  $(errorPlace).delay(3000).fadeOut()
 }
 
 const signUpSuccess = (data) => {
   console.log(data)
   console.log('you signed up!')
 
-  displayErrorMessage('Thank you for signing up!')
+  displayMessage('Thank you for signing up!', $('#signup-message'))
   $('#form-signup')[0].reset()
 }
 
 const signUpFailure = (error) => {
   if (error.status === 400) {
-    displayErrorMessage('There was a problem signing up, please try again!')
+    displayMessage('There was a problem signing up, please try again!', $('#signup-message'))
   } else {
-    displayErrorMessage()
+    displayMessage()
   }
 }
 
@@ -31,22 +31,22 @@ const signInSuccess = (data) => {
 
 const signInFailure = (error) => {
   if (error.status === 401) {
-    displayErrorMessage('There was a problem signing in.')
+    displayMessage('There was a problem signing in.')
   } else {
-    displayErrorMessage()
+    displayMessage()
   }
 }
 
 const changePasswordSuccess = (data) => {
-  displayErrorMessage('You changed your password!')
+  displayMessage('You changed your password!', $('#password-error'))
   $('#change-password')[0].reset()
 }
 
 const changePasswordFailure = (error) => {
   if (error.status === 400) {
-    displayErrorMessage('Invalid password.')
+    displayMessage('Invalid password.', $('#password-error'))
   } else {
-    displayErrorMessage()
+    displayMessage()
   }
 }
 
