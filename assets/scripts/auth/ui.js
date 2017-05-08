@@ -112,7 +112,9 @@ const onChangePassword = function (event) {
 const onGoToPasswordPage = () => {
   $('#current-page').html(showPasswordPage)
   $('#change-password').on('submit', onChangePassword)
+  $('#back-to-todo').on('click', mainPage)
 }
+
 // handlers
 const signUpHandlers = () => {
   $('#form-signup').off('submit', onSignUp)
