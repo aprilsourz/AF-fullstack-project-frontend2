@@ -3,7 +3,7 @@ const store = require('../store.js')
 const displayMessage = (errorText, errorPlace) => {
   $(errorPlace).text('')
   $(errorPlace).show()
-  $(errorPlace).text(errorText || 'Unknown error')
+  $(errorPlace).text(errorText)
   $(errorPlace).delay(3000).fadeOut()
 }
 
@@ -19,7 +19,7 @@ const signUpFailure = (error) => {
   if (error.status === 400) {
     displayMessage('There was a problem signing up, please try again!', $('#signup-message'))
   } else {
-    displayMessage()
+    displayMessage('Unknown error', $('#signup-message'))
   }
 }
 
@@ -31,9 +31,9 @@ const signInSuccess = (data) => {
 
 const signInFailure = (error) => {
   if (error.status === 401) {
-    displayMessage('There was a problem signing in.')
+    displayMessage('There was a problem signing in.', $('#signin-message'))
   } else {
-    displayMessage()
+    displayMessage('Unknown error.', $('#signin-message'))
   }
 }
 
@@ -46,7 +46,7 @@ const changePasswordFailure = (error) => {
   if (error.status === 400) {
     displayMessage('Invalid password.', $('#password-error'))
   } else {
-    displayMessage()
+    displayMessage('Unknown error', $('#password-error'))
   }
 }
 
