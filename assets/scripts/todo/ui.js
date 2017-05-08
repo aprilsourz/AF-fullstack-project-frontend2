@@ -113,11 +113,30 @@ const onCancelEdit = (event) => {
   createItemHandlers()
 }
 
+const onClickOutCancelEdit = () => {
+  event.preventDefault()
+  const toReplace = $('#current-edit')[0]
+  const replaceId = $(toReplace).attr('data-id')
+  const replaceContent = $(toReplace).attr('data-content')
+  const item = {
+    id: replaceId,
+    content: replaceContent
+  }
+  const sameItem = showItem({item: item})
+  $(toReplace).replaceWith(sameItem)
+  removeClickOutHandlers()
+  createItemHandlers()
+}
+
 const editItemHandlers = () => {
   $('.item-edit-form').off('submit', onSaveEdit)
   $('.item-edit-form').on('submit', onSaveEdit)
   $('.cancel-edit').off('click', onCancelEdit)
+  $('#current-edit').off('mouseleave', attachClickOutHandlers)
   $('.cancel-edit').on('click', onCancelEdit)
+  $('#current-edit').on('mouseleave', attachClickOutHandlers)
+  $('#current-edit').off('mouseenter', removeClickOutHandlers)
+  $('#current-edit').on('mouseenter', removeClickOutHandlers)
 }
 
 // handlers for whenever index item or create item happens
@@ -126,6 +145,13 @@ const createItemHandlers = () => {
   $('.item-edit').off('click', onStartEdit)
   $('.item-destroy').on('click', onItemDestroy)
   $('.item-edit').on('click', onStartEdit)
+}
+
+const attachClickOutHandlers = () => {
+  $('body').on('click', onClickOutCancelEdit)
+}
+const removeClickOutHandlers = () => {
+  $('body').off('click', onClickOutCancelEdit)
 }
 
 const addHandlers = () => {
