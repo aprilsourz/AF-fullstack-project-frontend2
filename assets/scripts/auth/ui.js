@@ -1,5 +1,4 @@
 const store = require('../store.js')
-const {resetForm} = require('../reset-form.js')
 
 const displayErrorMessage = (errorText) => {
   $('#display-error').text('')
@@ -40,6 +39,7 @@ const signInFailure = (error) => {
 
 const changePasswordSuccess = (data) => {
   displayErrorMessage('You changed your password!')
+  $('#change-password')[0].reset()
 }
 
 const changePasswordFailure = (error) => {

@@ -61,14 +61,13 @@ const signUpHandlers = () => {
   $('#back-to-signin').on('click', onBackToSignIn)
 }
 
-const addHandlers = () => {
-  $('#form-signup').on('submit', onSignUp)
+const mainPageHandlers = () => {
   $('#change-password').on('submit', onChangePassword)
   $('#signout').on('click', onSignOut)
 }
 
 module.exports = {
-  addHandlers,
+  mainPageHandlers,
   signInHandlers,
   signUpHandlers
 }

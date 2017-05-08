@@ -21,4 +21,5 @@ $(() => {
   $('#current-page').append(showSignIn)
   authEvents.signInHandlers()
   todoEvents.addHandlers()
+  authEvents.mainPageHandlers()
 })

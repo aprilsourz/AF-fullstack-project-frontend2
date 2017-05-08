@@ -74,6 +74,7 @@ const itemCreateSuccess = (data) => {
   const showItemHtml = showItem({ item: data.item })
   $('#current-list').append(showItemHtml)
   createItemHandlers()
+  $('#item-create')[0].reset()
 }
 
 const itemCreateFailure = (data) => {
@@ -144,13 +145,6 @@ const createItemHandlers = () => {
   $('.item-edit').off('click', onStartEdit)
   $('.item-destroy').on('click', onItemDestroy)
   $('.item-edit').on('click', onStartEdit)
-}
-
-const attachClickOutHandlers = () => {
-  $('body').on('click', onClickOutCancelEdit)
-}
-const removeClickOutHandlers = () => {
-  $('body').off('click', onClickOutCancelEdit)
 }
 
 const addHandlers = () => {
