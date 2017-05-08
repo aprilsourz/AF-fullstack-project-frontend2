@@ -1,4 +1,7 @@
 const store = require('../store.js')
+const showMainPage = require('../templates/main-page.handlebars')
+const api = require('./api.js')
+const todo = require('../todo/ui.js')
 
 const displayMessage = (errorText, errorPlace) => {
   $(errorPlace).text('')
@@ -8,9 +11,6 @@ const displayMessage = (errorText, errorPlace) => {
 }
 
 const signUpSuccess = (data) => {
-  console.log(data)
-  console.log('you signed up!')
-
   displayMessage('Thank you for signing up!', $('#signup-message'))
   $('#form-signup')[0].reset()
 }
@@ -24,9 +24,11 @@ const signUpFailure = (error) => {
 }
 
 const signInSuccess = (data) => {
-  console.log(data)
   store.user = data.user
   $('#form-signin')[0].reset()
+  $('#current-page').html(showMainPage)
+  $('#signout').on('click', onSignOut)
+  todo.addHandlers()
 }
 
 const signInFailure = (error) => {
@@ -59,6 +61,15 @@ const signOutSuccess = (data) => {
 const signOutFailure = () => {
   console.log('cant sign out')
 }
+// events
+
+const onSignOut = (event) => {
+  event.preventDefault()
+  api.signOut()
+    .then(signOutSuccess)
+    .catch(signOutFailure)
+}
+// handlers
 
 module.exports = {
   signUpSuccess,

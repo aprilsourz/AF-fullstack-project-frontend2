@@ -28,13 +28,6 @@ const onChangePassword = function (event) {
     .catch(ui.changePasswordFailure)
 }
 
-const onSignOut = (event) => {
-  event.preventDefault()
-  api.signOut()
-    .then(ui.signOutSuccess)
-    .catch(ui.signOutFailure)
-}
-
 // switch to sign up screen
 const onNoAccount = () => {
   $('#current-page').html(showSignUp)
@@ -61,13 +54,11 @@ const signUpHandlers = () => {
   $('#back-to-signin').on('click', onBackToSignIn)
 }
 
-const mainPageHandlers = () => {
+const passwordHandler = () => {
   $('#change-password').on('submit', onChangePassword)
-  $('#signout').on('click', onSignOut)
 }
 
 module.exports = {
-  mainPageHandlers,
   signInHandlers,
   signUpHandlers
 }
