@@ -5,6 +5,7 @@ const todo = require('../todo/ui.js')
 const showSignIn = require('../templates/sign-in.handlebars')
 const getFormFields = require(`../../../lib/get-form-fields`)
 const showSignUp = require('../templates/sign-up.handlebars')
+const showPasswordPage = require('../templates/change-password.handlebars')
 
 const displayMessage = (errorText, errorPlace) => {
   $(errorPlace).text('')
@@ -64,6 +65,7 @@ const signOutSuccess = (data) => {
 const signOutFailure = () => {
   console.log('cant sign out')
 }
+
 // events
 const onNoAccount = () => {
   $('#current-page').html(showSignUp)
@@ -98,6 +100,19 @@ const onBackToSignIn = () => {
   $('#current-page').html(showSignIn)
   signInHandlers()
 }
+
+const onChangePassword = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.changePassword(data)
+    .then(changePasswordSuccess)
+    .catch(changePasswordFailure)
+}
+
+const onGoToPasswordPage = () => {
+  $('#current-page').html(showPasswordPage)
+  $('#change-password').on('submit', onChangePassword)
+}
 // handlers
 const signUpHandlers = () => {
   $('#form-signup').off('submit', onSignUp)
@@ -119,6 +134,7 @@ const mainPage = () => {
   $('#signout').on('click', onSignOut)
   todo.addHandlers()
   todo.onItemIndex()
+  $('#goto-changepass').on('click', onGoToPasswordPage)
 }
 
 module.exports = {
