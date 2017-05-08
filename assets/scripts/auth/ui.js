@@ -2,6 +2,9 @@ const store = require('../store.js')
 const showMainPage = require('../templates/main-page.handlebars')
 const api = require('./api.js')
 const todo = require('../todo/ui.js')
+const showSignIn = require('../templates/sign-in.handlebars')
+const getFormFields = require(`../../../lib/get-form-fields`)
+const showSignUp = require('../templates/sign-up.handlebars')
 
 const displayMessage = (errorText, errorPlace) => {
   $(errorPlace).text('')
@@ -13,6 +16,8 @@ const displayMessage = (errorText, errorPlace) => {
 const signUpSuccess = (data) => {
   displayMessage('Thank you for signing up!', $('#signup-message'))
   $('#form-signup')[0].reset()
+  $('#current-page').html(showSignIn)
+  signInHandlers()
 }
 
 const signUpFailure = (error) => {
@@ -60,6 +65,10 @@ const signOutFailure = () => {
   console.log('cant sign out')
 }
 // events
+const onNoAccount = () => {
+  $('#current-page').html(showSignUp)
+  signUpHandlers()
+}
 
 const onSignOut = (event) => {
   event.preventDefault()
@@ -67,7 +76,42 @@ const onSignOut = (event) => {
     .then(signOutSuccess)
     .catch(signOutFailure)
 }
+
+const onSignIn = (event) => {
+  const data = getFormFields(event.target)
+  event.preventDefault()
+  api.signIn(data)
+    .then(signInSuccess)
+    .catch(signInFailure)
+}
+
+// back to sign in button
+const onSignUp = (event) => {
+  const data = getFormFields(event.target)
+  event.preventDefault()
+  api.signUp(data)
+    .then(signUpSuccess)
+    .catch(signUpFailure)
+}
+
+const onBackToSignIn = () => {
+  $('#current-page').html(showSignIn)
+  signInHandlers()
+}
 // handlers
+const signUpHandlers = () => {
+  $('#form-signup').off('submit', onSignUp)
+  $('#back-to-signin').off('click', onBackToSignIn)
+  $('#form-signup').on('submit', onSignUp)
+  $('#back-to-signin').on('click', onBackToSignIn)
+}
+
+const signInHandlers = () => {
+  $('#form-signin').off('submit', onSignIn)
+  $('#no-account').off('click', onNoAccount)
+  $('#form-signin').on('submit', onSignIn)
+  $('#no-account').on('click', onNoAccount)
+}
 
 // helpers
 const mainPage = () => {
@@ -85,6 +129,8 @@ module.exports = {
   changePasswordFailure,
   changePasswordSuccess,
   signOutFailure,
-  signOutSuccess
+  signOutSuccess,
+  signUpHandlers,
+  signInHandlers
 
 }
