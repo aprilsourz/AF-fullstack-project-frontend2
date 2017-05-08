@@ -82,7 +82,7 @@ const itemCreateFailure = (data) => {
 // succesful ajax patch
 const itemEditSuccess = (data) => {
   const showItemHtml = showItem({ item: data.item })
-  const currentEdit = $('div').filter('#current-edit')
+  const currentEdit = $('div').filter('.current-edit')
   $(currentEdit).replaceWith(showItemHtml)
   createItemHandlers()
 }
@@ -96,8 +96,11 @@ const itemEditFailure = (data) => {
 
 // swamps form and adds handlers for form when edit button is clicked
 const onStartEdit = (event) => {
+  console.log(event.target)
+  onClickOutCancelEdit()
   editFormSwap(event)
   editItemHandlers()
+  console.log('start edit')
 }
 
 // event that triggers the create item ajax request.
@@ -115,7 +118,7 @@ const onCancelEdit = (event) => {
 
 const onClickOutCancelEdit = () => {
   event.preventDefault()
-  const toReplace = $('#current-edit')[0]
+  const toReplace = $('.current-edit')[0]
   const replaceId = $(toReplace).attr('data-id')
   const replaceContent = $(toReplace).attr('data-content')
   const item = {
@@ -124,7 +127,6 @@ const onClickOutCancelEdit = () => {
   }
   const sameItem = showItem({item: item})
   $(toReplace).replaceWith(sameItem)
-  removeClickOutHandlers()
   createItemHandlers()
 }
 
@@ -132,11 +134,20 @@ const editItemHandlers = () => {
   $('.item-edit-form').off('submit', onSaveEdit)
   $('.item-edit-form').on('submit', onSaveEdit)
   $('.cancel-edit').off('click', onCancelEdit)
-  $('#current-edit').off('mouseleave', attachClickOutHandlers)
   $('.cancel-edit').on('click', onCancelEdit)
-  $('#current-edit').on('mouseleave', attachClickOutHandlers)
-  $('#current-edit').off('mouseenter', removeClickOutHandlers)
-  $('#current-edit').on('mouseenter', removeClickOutHandlers)
+  // mouseMoveHandlers()
+}
+
+const mouseMoveHandlers = () => {
+  $('.current-edit').off('mouseleave', attachClickOutHandlers)
+  $('.current-edit').on('mouseleave', attachClickOutHandlers)
+  $('.current-edit').off('mouseenter', removeClickOutHandlers)
+  $('.current-edit').on('mouseenter', removeClickOutHandlers)
+}
+
+const removeMouseMoveHandlers = () => {
+  $('.current-edit').off('mouseleave', attachClickOutHandlers)
+  $('.current-edit').off('mouseenter', removeClickOutHandlers)
 }
 
 // handlers for whenever index item or create item happens
