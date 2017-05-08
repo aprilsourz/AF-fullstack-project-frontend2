@@ -27,6 +27,7 @@ const signUpFailure = (error) => {
 const signInSuccess = (data) => {
   console.log(data)
   store.user = data.user
+  $('#form-signin')[0].reset()
 }
 
 const signInFailure = (error) => {
