@@ -57,13 +57,13 @@ const changePasswordFailure = (error) => {
 }
 
 const signOutSuccess = (data) => {
-  console.log(data)
-  console.log('You signed out!')
   store.user = null
+  $('#current-page').html(showSignIn)
+  signInHandlers()
 }
 
 const signOutFailure = () => {
-  console.log('cant sign out')
+  displayMessage('Problem signing out.', $('#signout-message'))
 }
 
 // events
