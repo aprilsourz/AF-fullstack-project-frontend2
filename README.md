@@ -6,8 +6,8 @@
 
 This is a basic to do list app. It uses a custom an API
 that I built with Rails. It supports creating an account and storing
-list items in a database for that user. When the user signs in their
-to do list will be in the same state it was when they left the app last.
+list items in a database for that user. When the user signs in, their
+to do list will be in the same state it was when they last left the app.
 A user can create, edit and delete list items as well as change their password.
 
 ### Wire Frames
