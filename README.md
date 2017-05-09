@@ -4,6 +4,12 @@
 
 [Link to app](https://arlofeirman.github.io/AF-fullstack-project-frontend2/)
 
+This is a basic to do list app. It uses a custom an API
+that I built with Rails. It supports creating an account and storing
+list items in a database for that user. When the user signs in their
+to do list will be in the same state it was when they left the app last.
+A user can create, edit and delete list items as well as change their password.
+
 ### Wire Frames
 -  [Wire Frame 1](http://i.imgur.com/tTYikxC.jpg)
 -  [Wire Frame 2](http://i.imgur.com/fq5xNlj.jpg)
@@ -23,26 +29,35 @@
 
 Given I am a user,
 When I first enter the page,
-Then I should be able to create an account
+Then I should be able to create an account.
 
-Given I am a user
-If have made an account or already have an account
-I should be able to sign in
+Given I am a user,
+If have made an account or already have an account,
+I should be able to sign in.
 
-Given I am a user.
-When I sign in and I have previously created todo items.
+Given I am a user,
+If I am signed in,
+I should be able to out.
+
+Given I am a user,
+If I am signed in,
+I should be able to change my password.
+
+Given I am a user,
+When I sign in and I have previously created todo items,
 I should see all my todo items.
 
-Given I am a user
-Once I sign in 
-I should be able to create a to-do item
+Given I am a user,
+Once I sign in,
+I should be able to create a to-do item.
 
-Given I am a user 
-If I have created to do items
-I should be able to delete a to-do item
+Given I am a user,
+If I have created to do items,
+I should be able to delete a to-do item.
 
-Given I am a user after I have created a to-do item
-I should be able to edit that to-do item
+Given I am a user,
+after I have created a to-do item,
+I should be able to edit that to-do item.
 
 ## Process
 
@@ -50,8 +65,7 @@ I should be able to edit that to-do item
 I started this project by writing user stories and making wire frames.
 
 From the user stories I made a list of features.
-Before starting a featue I broke it into smaller parts and worked on each par
-
+Before starting a featue I broke it into smaller parts and worked them sequentially
 
 I felt like it would be easier to start the game logic code if I had click events
 set up. So I set up click events and wrote code to switch between X's and 0's
