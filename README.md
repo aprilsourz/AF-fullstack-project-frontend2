@@ -22,7 +22,9 @@
 ## User Stories
 
 Given I am a user
+
 When I first enter the page
+
 Then I should be able to create an account
 
 Given I am a user
