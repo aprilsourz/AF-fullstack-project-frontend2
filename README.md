@@ -29,9 +29,9 @@ Given I am a user
 If have made an account or already have an account
 I should be able to sign in
 
-Given I am a user 
-When I sign in and I have previously created todo items
-I should see all my todo items
+Given I am a user.
+When I sign in and I have previously created todo items.
+I should see all my todo items.
 
 Given I am a user
 Once I sign in 
