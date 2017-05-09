@@ -32,7 +32,7 @@ When I first enter the page,
 Then I should be able to create an account.
 
 Given I am a user,
-If have made an account or already have an account,
+If I have made an account or already have an account,
 I should be able to sign in.
 
 Given I am a user,
