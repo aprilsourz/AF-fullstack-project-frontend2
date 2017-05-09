@@ -65,67 +65,28 @@ I should be able to edit that to-do item.
 I started this project by writing user stories and making wire frames.
 
 From the user stories I made a list of features.
-Before starting a featue I broke it into smaller parts and worked them sequentially
-
-I felt like it would be easier to start the game logic code if I had click events
-set up. So I set up click events and wrote code to switch between X's and 0's
-and put them on the tic tac toe board.
-
-Before I wrote any of the game logic I wrote pseudo code and drew
-diagrams on a [white board.](http://i.imgur.com/NhmlQ2D.jpg)
-The game board is represented by an array with 9 values, starting off as null.
-
-```javascript
-let currentGame = [null, null, null, null, null, null, null, null, null]
-```
-
-When player X makes a move true is pushed into the array at the corresponding
-index. False for player O.
+Before starting a featue I broke it into smaller parts and worked them sequentially.
 
 
-Determining the winner of the game was the most difficult part of the project.
-I did more whiteboarding, [Link,](http://i.imgur.com/2vlWCAH.jpg) [Link.](http://i.imgur.com/GHPXqrR.jpg)
-I found that their are only 8 winning combinations for each player. I used an
-array with 8 sub array's. Each sub array contains the indexes of a winning
-combo.
+I started off with all the HTML elements on the page. For each feature I 
+made sure the jQuery events were triggering the right functions, and the ajax
+requests were returning the right JSON. I tested my ajax requests in the console
+before I worked on rednering the JSON on the page.
 
-```javascript
-const winCombos = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [2, 5, 8],
-  [1, 4, 7],
-  [0, 3, 6],
-  [0, 4, 8],
-  [2, 4, 6]
-]
-```
-I iterate over the winCombos array passing each sub array to a function that
-takes the 3 winning indexes and checks if the currentGame array is true (payer x)
-or false (player o) at those indexes.
+I seperated the three main pages into handle bars templates and wrote
+functions to swap them in and out and the right times. Thats how I created the UI.
+In a previous project I used jQuery .show and .hide methods for my UI. 
+Handlebars this my life a lot easier, its much a cleaner and more effective
+way to swap DOM elements in and out of view.
 
-At this point my game was working, but only on the first play. Once I pressed
-the play again button I would get bugs that I couldn't reproduce consistently.
-Such as starting the game as player O, double turns, winning the game at
-the wrong time, and the game board being out of sync with currentGame array.
-
-I started off the debugging process by shortening my game logic functions.
-I got it from 100 to 50 lines of code. I then used console logs and the chrome
-debugger to isolate the problem. The play again button was adding all the click
-events back to the game cells without removing them first. Any cells that
-were not filled in the first game ended up with two identical click events on
-the second game.
-
-I used curl requests to interect with the game api, then I wrote the ajax.
-
-The UI was done with JQuery's hide and show methods.
-
+I wanted to implement a feature that would close the an edit form 
+when the user clicked anywhere outside of it. I wasn't able to come up with a solution.
+I didn't have any console errors to work with and it was hard to keep track 
+of all the DOM mutation that was occurring.
 
 ## For Future Iterations
-- Add visual notifications for invalid sign in or sign up
-- Style the App
-- Use routing instead of .hide() and .show()
-- Add feature to support player 0 joining the game from a second device.
-- Add win counter feature
-- Show which player won the game when user requests game by ID.
+- Todo list for each day of the week
+- Color attribute for todo items
+- Importance attribute for todo items
+- Style the app
+- Close open edit item form when user clicks outside
