@@ -45,10 +45,10 @@ I should be able to change my password.
 
 Given I am a user,
 When I sign in and I have previously created todo items,
-I should see all my todo items.
+I should see all my to-do items.
 
 Given I am a user,
-Once I sign in,
+Once I have signed in,
 I should be able to create a to-do item.
 
 Given I am a user,
@@ -74,12 +74,12 @@ requests were returning the right JSON. I tested my ajax requests in the console
 before I worked on rednering the JSON on the page.
 
 I seperated the three main pages into handle bars templates and wrote
-functions to swap them in and out and the right times. Thats how I created the UI.
+functions to swap them in and out at the right times. Thats how I created the UI.
 In a previous project I used jQuery .show and .hide methods for my UI. 
-Handlebars this my life a lot easier, its much a cleaner and more effective
+Handlebars made my life a lot easier, its a much cleaner and more effective
 way to swap DOM elements in and out of view.
 
-I wanted to implement a feature that would close the an edit form 
+I wanted to implement a feature that would close an edit form 
 when the user clicked anywhere outside of it. I wasn't able to come up with a solution.
 I didn't have any console errors to work with and it was hard to keep track 
 of all the DOM mutation that was occurring.
@@ -89,4 +89,4 @@ of all the DOM mutation that was occurring.
 - Color attribute for todo items
 - Importance attribute for todo items
 - Style the app
-- Close open edit item form when user clicks outside
+- Close open edit form when user clicks outside
