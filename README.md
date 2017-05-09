@@ -37,7 +37,7 @@ I should be able to sign in.
 
 Given I am a user,
 If I am signed in,
-I should be able to out.
+I should be able to sign out.
 
 Given I am a user,
 If I am signed in,
