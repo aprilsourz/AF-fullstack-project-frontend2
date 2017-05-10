@@ -50,7 +50,6 @@ const onItemDestroy = (event) => {
 
 // successful ajax index
 const itemIndexSuccess = (data) => {
-  console.log(data.items)
   const allItemsHtml = showAllItems({ items: data.items })
   $('#current-list').html(allItemsHtml)
   createItemHandlers()
@@ -65,7 +64,6 @@ const itemDestroySuccess = (data) => {
 }
 
 const itemDestroyFailure = (data) => {
-  console.log(data)
 }
 
 // successsful ajax post
@@ -77,7 +75,6 @@ const itemCreateSuccess = (data) => {
 }
 
 const itemCreateFailure = (data) => {
-  console.log(data)
 }
 // succesful ajax patch
 const itemEditSuccess = (data) => {
@@ -88,19 +85,15 @@ const itemEditSuccess = (data) => {
 }
 
 const itemEditFailure = (data) => {
-  console.log(data)
-}
 
-// stuff that ended up here because of the orginal issue while trying to trigger
-// a required function in the click handler (itemDestroy)
+}
 
 // swamps form and adds handlers for form when edit button is clicked
 const onStartEdit = (event) => {
-  console.log(event.target)
+
   onClickOutCancelEdit()
   editFormSwap(event)
   editItemHandlers()
-  console.log('start edit')
 }
 
 // event that triggers the create item ajax request.
