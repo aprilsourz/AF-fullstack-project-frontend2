@@ -3,6 +3,7 @@
     <div class="btn-group-lg" role="group">
       <button type="button" id="signout" class="btn btn-default">Sign Out</button>
       <button type="button" id="goto-changepass" class="btn btn-default">Change Password</button>
+      <p class="message-text" id="signout-message"></p>
     </div>
   </div>
 
@@ -11,15 +12,11 @@
 <div class="col-md-2 col-xs-2"></div>
 </div>
 
-<p id="signout-message"></p>
   <form id="item-create" class="form-signin">
     <label>Create Item</label>
     <input name="item[content]" type="text" class="form-control" required="" autofocus="">
     <button class="btn btn-default btn-block" type="submit">Create</button>
   </form>
-
-
-
 
   <!-- div to insert item index into -->
   <div id="current-list"></div>

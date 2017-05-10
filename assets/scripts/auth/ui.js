@@ -15,10 +15,10 @@ const displayMessage = (errorText, errorPlace) => {
 }
 
 const signUpSuccess = (data) => {
-  displayMessage('Thank you for signing up!', $('#signup-message'))
   $('#form-signup')[0].reset()
   $('#current-page').html(showSignIn)
   signInHandlers()
+  displayMessage('Thank you for signing up!', $('#signin-message'))
 }
 
 const signUpFailure = (error) => {
