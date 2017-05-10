@@ -49,7 +49,19 @@ h1 {
   font-size: 60px;
 }
 
+.inline {
+  display: inline;
+}
+
 .group{
-  margin: 0 auto;
-  text-align: center;
+max-width: 500px;
+min-width: 300px;
+}
+
+.center {
+  margin: 0 auto
+}
+
+#item-create{
+  margin-bottom: 25px;
 }
