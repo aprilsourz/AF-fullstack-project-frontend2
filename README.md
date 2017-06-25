@@ -70,7 +70,7 @@ Before starting a featue I broke it into smaller parts and worked on them sequen
 I started off with all of the HTML elements on the page. For each feature I 
 made sure the jQuery events were triggering the right functions and the HTTP
 requests were hitting the correct endpoints. I tested the AJAX requests in the console
-before I worked on rendering the JSON on the page.
+before I worked on rendering the JSON to the page.
 
 I seperated the three main pages into handlebars templates and wrote
 functions to swap them in and out of the DOM. In a previous project I used a the jQuery .show and .hide methods for the UI. 
