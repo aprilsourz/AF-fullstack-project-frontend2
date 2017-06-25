@@ -4,11 +4,12 @@
 
 [Link to app](https://arlofeirman.github.io/AF-fullstack-project-frontend2/)
 
-This is a basic to do list app. It uses a custom an API
-that I built with Rails. It supports creating an account and storing
-list items in a database for that user. When the user signs in, their
-to do list will be in the same state it was when they last left the app.
-A user can create, edit and delete list items as well as change their password.
+Second project for the Web Development Immersive at General Assembly. I built the app over a 5-day sprint.
+The server may take 15 to 30 seconds to respond when you first create an account.
+The back end is hosted on Heroku, which puts the API to sleep after 30 minutes of inactivity.
+Fore more information [click here.](https://devcenter.heroku.com/articles/free-dyno-hours)
+
+Todo list app which uses an API that I built with Rails. A user can create an account, sign in, sign out, and change password. As well as create, edit, and delete items from their todo list. All user actions are persisted in a PostgreSQL database.
 
 ### Wire Frames
 -  [Wire Frame 1](http://i.imgur.com/tTYikxC.jpg)
