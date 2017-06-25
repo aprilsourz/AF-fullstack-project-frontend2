@@ -62,11 +62,10 @@ I should be able to edit that to-do item.
 
 ## Process
 
-[I built the custom API first.](https://github.com/arlofeirman/AF-fullstack-project-backend)
-I started this project by writing user stories and making wire frames.
+[I built the API first.](https://github.com/arlofeirman/AF-fullstack-project-backend)
 
 From the user stories I made a list of features.
-Before starting a featue I broke it into smaller parts and worked them sequentially.
+Before starting a featue I broke it into smaller parts and worked on them sequentially.
 
 
 I started off with all the HTML elements on the page. For each feature I 
@@ -74,20 +73,11 @@ made sure the jQuery events were triggering the right functions, and the ajax
 requests were returning the right JSON. I tested my ajax requests in the console
 before I worked on rednering the JSON on the page.
 
-I seperated the three main pages into handle bars templates and wrote
-functions to swap them in and out at the right times. Thats how I created the UI.
-In a previous project I used jQuery .show and .hide methods for my UI. 
-Handlebars made my life a lot easier, its a much cleaner and more effective
-way to swap DOM elements in and out of view.
-
-I wanted to implement a feature that would close an edit form 
-when the user clicked anywhere outside of it. I wasn't able to come up with a solution.
-I didn't have any console errors to work with and it was hard to keep track 
-of all the DOM mutation that was occurring.
+I seperated the three main pages into handlebars templates and wrote
+functions to swap them in and out at the right times.
+In a previous project I used a the jQuery .show and .hide methods for the UI. 
+Handlebars proved to be a much cleaner way to swap DOM elements in and out of view.
 
 ## For Future Iterations
 - Todo list for each day of the week
-- Color attribute for todo items
-- Importance attribute for todo items
-- Style the app
-- Close open edit form when user clicks outside
+- Colors for todo items
