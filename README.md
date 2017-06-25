@@ -45,20 +45,19 @@ If I am signed in,
 I should be able to change my password.
 
 Given I am a user,
-When I sign in and I have previously created todo items,
-I should see all my to-do items.
+When I sign in,
+I should see all my todo items.
 
 Given I am a user,
 Once I have signed in,
-I should be able to create a to-do item.
+I should be able to create a todo item.
 
 Given I am a user,
 If I have created to do items,
-I should be able to delete a to-do item.
+I should be able to delete a todo item.
 
 Given I am a user,
-after I have created a to-do item,
-I should be able to edit that to-do item.
+I should be able to edit my todo items.
 
 ## Process
 
