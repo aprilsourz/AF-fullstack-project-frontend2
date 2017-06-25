@@ -68,15 +68,14 @@ From the user stories I made a list of features.
 Before starting a featue I broke it into smaller parts and worked on them sequentially.
 
 
-I started off with all the HTML elements on the page. For each feature I 
-made sure the jQuery events were triggering the right functions, and the ajax
-requests were returning the right JSON. I tested my ajax requests in the console
-before I worked on rednering the JSON on the page.
+I started off with all of the HTML elements on the page. For each feature I 
+made sure the jQuery events were triggering the right functions and the HTTP
+requests were hitting the correct endpoints. I tested the AJAX requests in the console
+before I worked on rendering the JSON on the page.
 
 I seperated the three main pages into handlebars templates and wrote
-functions to swap them in and out at the right times.
-In a previous project I used a the jQuery .show and .hide methods for the UI. 
-Handlebars proved to be a much cleaner way to swap DOM elements in and out of view.
+functions to swap them in and out of the DOM. In a previous project I used a the jQuery .show and .hide methods for the UI. 
+Handlebars proved to be a much cleaner way to maipulate the DOM.
 
 ## For Future Iterations
 - Todo list for each day of the week
