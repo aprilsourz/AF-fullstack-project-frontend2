@@ -1,13 +1,8 @@
 
 
-# Arlo Feirman - Todo List App
-
-[Link to app](https://arlofeirman.github.io/AF-fullstack-project-frontend2/)
+# April Feirman - Todo List App
 
 Second project for the Web Development Immersive at General Assembly. I built the app over a 5-day sprint.
-The server may take 15 to 30 seconds to respond when you first create an account.
-The back end is hosted on Heroku, which puts the API to sleep after 30 minutes of inactivity.
-Fore more information [click here.](https://devcenter.heroku.com/articles/free-dyno-hours)
 
 Todo list app which uses an API that I built with Rails. A user can create an account, sign in, sign out, and change password. As well as create, edit, and delete items from their todo list. All user actions are persisted in a PostgreSQL database.
 
